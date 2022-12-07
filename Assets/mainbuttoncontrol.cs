@@ -15,7 +15,7 @@ public class mainbuttoncontrol : MonoBehaviour
     }
     public void menu_back_start_button()
     {
-        SceneManager.LoadScene("시작화면");
+        SceneManager.LoadScene("start scene");
     }
     public void menu_save_lord_button()
     {
