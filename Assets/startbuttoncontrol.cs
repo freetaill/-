@@ -3,13 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class startsave : MonoBehaviour
+public class startbuttoncontrol : MonoBehaviour
 {
-    public void StartButton()
+    public void start_button()
     {
-        SceneManager.LoadScene("main scene");
+        SceneManager.LoadScene("새로시작");
     }
 
+    public void exit_button()
+    {
+        Application.Quit();
+    }
 
     // Start is called before the first frame update
     void Start()
