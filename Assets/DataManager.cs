@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 // 저장하는 방법
 // 1. 저장할 데이터가 존재
@@ -20,22 +21,16 @@ public class PlayerData
 
 public class DataManager : MonoBehaviour
 {
-    private static DataManager instance;
+    public static DataManager instance;
 
-    //public static DataManager Instance
-    //{
-    //    get
-    //    {
-    //        if(instance == null)
-    //        {
-    //            return null;
-    //        }
-    //        return instance;
-    //    }
-    //}
+    public PlayerData nowPlayer = new PlayerData();
+
+    public string path;
+    public int nowSlot;
 
     private void Awake()
     {
+        //싱글톤 생성
         if (instance == null)
         {
             instance = this;
@@ -45,10 +40,31 @@ public class DataManager : MonoBehaviour
             Destroy(this.gameObject);
         }
         DontDestroyOnLoad(gameObject);
+        //싱글톤 생성
+
+        path = Application.persistentDataPath + "/save";
+    }
+
+    void Start()
+    {
+        
     }
 
     public void save()
     {
-        print("저장완료");
+        string data = JsonUtility.ToJson(nowPlayer);
+        File.WriteAllText(path + nowSlot.ToString(), data);
+    }
+
+    public void load()
+    {
+        string data =  File.ReadAllText(path + nowSlot.ToString());
+        nowPlayer = JsonUtility.FromJson<PlayerData>(data);
+    }
+
+    public void DataClear()
+    {
+        nowSlot = -1;
+        nowPlayer = new PlayerData();
     }
 }
