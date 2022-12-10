@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using UnityEditor;
 
 // 저장하는 방법
 // 1. 저장할 데이터가 존재
@@ -16,14 +17,17 @@ using System.IO;
 public class PlayerData
 {
     public string Name;
+    public int fatigue;
     public int Gold;
+    public int record;
 }
 
 public class DataManager : MonoBehaviour
 {
     public static DataManager instance;
 
-    public PlayerData nowPlayer = new PlayerData();
+    public Player nowPlayer = new Player();
+    public Animal nowAnimal = new Animal();
 
     public string path;
     public int nowSlot;
@@ -59,12 +63,12 @@ public class DataManager : MonoBehaviour
     public void load()
     {
         string data =  File.ReadAllText(path + nowSlot.ToString());
-        nowPlayer = JsonUtility.FromJson<PlayerData>(data);
+        nowPlayer = JsonUtility.FromJson<Player>(data);
     }
 
     public void DataClear()
     {
         nowSlot = -1;
-        nowPlayer = new PlayerData();
+        nowPlayer = new Player();
     }
 }
