@@ -7,10 +7,12 @@ public class mainbuttoncontrol : MonoBehaviour
 {
     public GameObject menuPanel;
     public GameObject interaction_Panel;
+    public GameObject back_panel;
     
     public void menu_button()
     {
         Time.timeScale = 0;
+        back_panel.SetActive(true);
         menuPanel.SetActive(true);
     }
     public void menu_back_start_button()
@@ -28,12 +30,13 @@ public class mainbuttoncontrol : MonoBehaviour
     public void menu_back_main_button()
     {
         Time.timeScale = 1;
+        back_panel.SetActive(false);
         menuPanel.SetActive(false);
     }
 
     public void ineraction_button()
     {
-        interaction_Panel.SetActive(true);
+        interaction_Panel.SetActive(!interaction_Panel.active);
     }
     public void interaction_walk_button()
     {
@@ -44,9 +47,30 @@ public class mainbuttoncontrol : MonoBehaviour
 
     }
 
+    public void parttime_button()
+    {
+
+    }
+
+    public void competition_button()
+    {
+        SceneManager.LoadScene("competition");
+    }
+
+    public void store_button()
+    {
+        SceneManager.LoadScene("Shop");
+    }
+
+    public void training_button()
+    {
+
+    }
+
     // Start is called before the first frame update
     void Start()
     {
+        back_panel.SetActive(false);
         interaction_Panel.SetActive(false);
         menuPanel.SetActive(false);
     }
