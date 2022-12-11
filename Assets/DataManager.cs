@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using UnityEditor;
+using System;
 
 // 저장하는 방법
 // 1. 저장할 데이터가 존재
@@ -13,14 +14,6 @@ using UnityEditor;
 // 1. 외부에 저장된 제이슨을 가져옴
 // 2. 제이슨을 데이터 형태로 변환
 // 3. 불러온 데이터를 사용
-
-public class PlayerData
-{
-    public string Name;
-    public int fatigue;
-    public int Gold;
-    public int record;
-}
 
 public class DataManager : MonoBehaviour
 {
@@ -56,14 +49,16 @@ public class DataManager : MonoBehaviour
 
     public void save()
     {
-        string data = JsonUtility.ToJson(nowPlayer);
+        string data = JsonUtility.ToJson(nowPlayer) + "/" + JsonUtility.ToJson(nowAnimal);
         File.WriteAllText(path + nowSlot.ToString(), data);
     }
 
     public void load()
     {
         string data =  File.ReadAllText(path + nowSlot.ToString());
-        nowPlayer = JsonUtility.FromJson<Player>(data);
+        string[] datasplit = data.Split('/');
+        nowPlayer = JsonUtility.FromJson<Player>(datasplit[0]);
+        nowAnimal = JsonUtility.FromJson<Animal>(datasplit[1]);
     }
 
     public void DataClear()
