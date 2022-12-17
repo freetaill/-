@@ -8,7 +8,7 @@ using System.IO;
 public class Player
 {
     public string Name;
-    public int fatigue;
-    public int Gold;
-    public int record;
+    public int fatigue = 100;
+    public int Gold = 500;
+    public int record = 0;
 }
