@@ -39,7 +39,7 @@ public class DataManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         //½Ì±ÛÅæ »ý¼º
 
-        path = Application.persistentDataPath + "/save";
+        path = Application.dataPath + "/save";
     }
 
     void Start()

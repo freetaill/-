@@ -254,6 +254,7 @@ public class mainbuttoncontrol : MonoBehaviour
         parttime_Panel.SetActive(false);
         parttime_confirm_Panel.SetActive(false);
         parttime_not_Panel.SetActive(false);
+        status_update();
     }
 
     // Update is called once per frame
