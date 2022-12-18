@@ -5,11 +5,12 @@ using UnityEngine;
 public class Animal
 {
     public string type;
-    public int hp = 100;
+    public int hp = 10;
     public int charming = 0;
     public int speed = 10;
     public int hunger = 100;
     public int closeness = 0;
     public int fatigue = 100;
     public int age = 0;
+    public int jump = 10;
 }

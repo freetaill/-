@@ -27,6 +27,10 @@ public class AnimalMove : MonoBehaviour
         if (rayHit.collider == null) {
             //if(rayHit.distance)
             CancelInvoke();
+            //Invoke("Think", 3);
+        }
+        else
+        {
             Invoke("Think", 3);
         }
     }
