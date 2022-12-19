@@ -108,7 +108,7 @@ public class mainbuttoncontrol : MonoBehaviour
         {
             confirm_Panel.SetActive(true);
             int rb = Random.Range(1, 3);
-            // myanimal.jump += rb;
+            DataManager.instance.nowAnimal.jump += rb;
             DataManager.instance.nowAnimal.fatigue -= 20;
             confirm_text.text = "점프력이 " + rb.ToString() + " 만큼 올랐습니다.";
         }
