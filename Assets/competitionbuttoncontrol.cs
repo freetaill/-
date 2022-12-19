@@ -17,6 +17,7 @@ public class competitionbuttoncontrol : MonoBehaviour
     public Image[] endpoint;
 
     public Animal[] Rival = new Animal[6];
+    public bool[] flag = new bool[3];
 
     public float track;
 
@@ -81,7 +82,7 @@ public class competitionbuttoncontrol : MonoBehaviour
 
     async public void swim_rank()
     {
-        int temp = 0;
+        double temp = 0;
         for (int i = 0; i < 6; i++)
         {
             for (int j = 0; j < 5; j++)
@@ -94,10 +95,11 @@ public class competitionbuttoncontrol : MonoBehaviour
 
                     temp = DataManager.instance.nowranking.swim_type[j];
                     DataManager.instance.nowranking.swim_type[j] = DataManager.instance.nowranking.swim_type[j+1];
-                    DataManager.instance.nowranking.swim_type[j+1] = temp;
+                    DataManager.instance.nowranking.swim_type[j+1] = (int)temp;
                 }
             }
         }
+        flag[0] = true;
         show_swimrank();
         await Task.Delay(10000);
         competition_Panel.SetActive(false);
@@ -105,30 +107,62 @@ public class competitionbuttoncontrol : MonoBehaviour
 
     public void show_swimrank()
     {
-        for (int i = 5; i > 2; i--)
+        if (flag[0])
         {
-            ranking[5 - i].sprite = DataManager.instance.sit[DataManager.instance.nowranking.swim_type[i]];
+            for (int i = 5; i > 2; i--)
+            {
+                ranking[5 - i].sprite = DataManager.instance.sit[DataManager.instance.nowranking.swim_type[i]];
+            }
         }
     }
 
     async public void charmming_rank()
     {
-
-    }
-
-    public void show_charmming()
-    {
-
-    }
-
-    async public void hurdle_rank()
-    {
-        int temp = 0;
+        double temp = 0;
         for (int i = 0; i < 6; i++)
         {
             for (int j = 0; j < 5; j++)
             {
-                if (DataManager.instance.nowranking.swim_hp[j] > DataManager.instance.nowranking.swim_hp[j + 1])
+                if (DataManager.instance.nowranking.charm_charmming[j]
+                    > DataManager.instance.nowranking.charm_charmming[j + 1])
+                {
+                    temp = DataManager.instance.nowranking.charm_charmming[j];
+                    DataManager.instance.nowranking.charm_charmming[j] =
+                        DataManager.instance.nowranking.charm_charmming[j + 1];
+                    DataManager.instance.nowranking.charm_charmming[j + 1] = temp;
+
+                    temp = DataManager.instance.nowranking.charm_type[j];
+                    DataManager.instance.nowranking.charm_type[j] = DataManager.instance.nowranking.charm_type[j + 1];
+                    DataManager.instance.nowranking.charm_type[j + 1] = (int)temp;
+                }
+            }
+        }
+        flag[1] = true;
+        show_charmming();
+        await Task.Delay(10000);
+        competition_Panel.SetActive(false);
+    }
+
+    public void show_charmming()
+    {
+        if (flag[1])
+        {
+            for (int i = 5; i > 2; i--)
+            {
+                ranking[5 - i].sprite = DataManager.instance.sit[DataManager.instance.nowranking.charm_type[i]];
+            }
+        }
+    }
+
+    async public void hurdle_rank()
+    {
+        double temp = 0;
+        for (int i = 0; i < 6; i++)
+        {
+            for (int j = 0; j < 5; j++)
+            {
+                if (DataManager.instance.nowranking.hurdle_speedjump[j] 
+                    > DataManager.instance.nowranking.hurdle_speedjump[j + 1])
                 {
                     temp = DataManager.instance.nowranking.hurdle_speedjump[j];
                     DataManager.instance.nowranking.hurdle_speedjump[j] = 
@@ -137,10 +171,11 @@ public class competitionbuttoncontrol : MonoBehaviour
 
                     temp = DataManager.instance.nowranking.hurdle_type[j];
                     DataManager.instance.nowranking.hurdle_type[j] = DataManager.instance.nowranking.hurdle_type[j + 1];
-                    DataManager.instance.nowranking.hurdle_type[j + 1] = temp;
+                    DataManager.instance.nowranking.hurdle_type[j + 1] = (int)temp;
                 }
             }
         }
+        flag[2] = true;
         show_hurdle();
         await Task.Delay(10000);
         competition_Panel.SetActive(false);
@@ -148,9 +183,12 @@ public class competitionbuttoncontrol : MonoBehaviour
 
     public void show_hurdle()
     {
-        for (int i = 5; i > 2; i--)
+        if (flag[2])
         {
-            ranking[5 - i].sprite = DataManager.instance.sit[DataManager.instance.nowranking.swim_type[i]];
+            for (int i = 5; i > 2; i--)
+            {
+                ranking[5 - i].sprite = DataManager.instance.sit[DataManager.instance.nowranking.hurdle_type[i]];
+            }
         }
     }
 
@@ -174,6 +212,8 @@ public class competitionbuttoncontrol : MonoBehaviour
         int hp = DataManager.instance.nowAnimal.hp;
         int speed = DataManager.instance.nowAnimal.speed;
         int jump = DataManager.instance.nowAnimal.jump;
+        int closeness = DataManager.instance.nowAnimal.closeness;
+        int charmming = DataManager.instance.nowAnimal.charming;
 
         Rival[0] = new Animal(0, 0, 0, 0, 0, 0, 0, 0, 0);
         Rival[0] = DataManager.instance.nowAnimal;
@@ -193,6 +233,8 @@ public class competitionbuttoncontrol : MonoBehaviour
                 Rival[i].hp = Random.Range(hp - 10, hp + 10);
                 Rival[i].speed = Random.Range(speed - 10, speed + 10);
                 Rival[i].jump = Random.Range(jump - 10, jump + 10);
+                Rival[i].closeness = Random.Range(closeness - 10, closeness + 10);
+                Rival[i].charming = Random.Range(charmming - 10, charmming + 10);
             }
         }
         for (int i = 0; i < 6; i++)
@@ -205,10 +247,15 @@ public class competitionbuttoncontrol : MonoBehaviour
             {
                 racer[0].sprite = DataManager.instance.stand[DataManager.instance.nowAnimal.type];
             }
+            double swimhp = (double)Rival[i].hp * Rival[i].closeness / 100;
+            double hurdlespeedjump = (double)(Rival[i].speed + Rival[i].jump) / 2 * Rival[i].closeness / 100;
             DataManager.instance.nowranking.swim_type[i] = Rival[i].type;
-            DataManager.instance.nowranking.swim_hp[i] = Rival[i].hp;
+            DataManager.instance.nowranking.swim_hp[i] = swimhp; 
             DataManager.instance.nowranking.hurdle_type[i] = Rival[i].type;
-            DataManager.instance.nowranking.hurdle_speedjump[i] = (Rival[i].speed + Rival[i].jump) / 2;
+            DataManager.instance.nowranking.hurdle_speedjump[i] = hurdlespeedjump;
+            DataManager.instance.nowranking.charm_type[i] = Rival[i].type;
+            DataManager.instance.nowranking.charm_charmming[i] = Rival[i].charming;
+            print(DataManager.instance.nowranking.hurdle_type[i]);
         }
     }
 
