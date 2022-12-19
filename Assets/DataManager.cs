@@ -20,7 +20,11 @@ public class DataManager : MonoBehaviour
     public static DataManager instance;
 
     public Player nowPlayer = new Player();
-    public Animal nowAnimal = new Animal();
+    public Animal nowAnimal = new Animal(0, 10, 0, 10, 100, 0, 100, 0, 10);
+
+    public Sprite[] face;
+    public Sprite[] sit;
+    public Sprite[] stand;
 
     public string path;
     public int nowSlot;

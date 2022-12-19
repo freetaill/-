@@ -27,6 +27,7 @@ public class mainbuttoncontrol : MonoBehaviour
     public Slider player_fatigue;
     public Slider closed;
     public Text gold_text;
+    public Image[] image;
 
     public void menu_button()
     {
@@ -108,7 +109,7 @@ public class mainbuttoncontrol : MonoBehaviour
         {
             confirm_Panel.SetActive(true);
             int rb = Random.Range(1, 3);
-            // myanimal.jump += rb;
+            DataManager.instance.nowAnimal.jump += rb;
             DataManager.instance.nowAnimal.fatigue -= 20;
             confirm_text.text = "점프력이 " + rb.ToString() + " 만큼 올랐습니다.";
         }
@@ -262,6 +263,8 @@ public class mainbuttoncontrol : MonoBehaviour
         parttime_confirm_Panel.SetActive(false);
         parttime_not_Panel.SetActive(false);
         status_update();
+        image[0].sprite = DataManager.instance.stand[DataManager.instance.nowAnimal.type];
+        image[1].sprite = DataManager.instance.face[DataManager.instance.nowAnimal.type];
     }
 
     // Update is called once per frame
