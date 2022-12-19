@@ -31,6 +31,11 @@ public class mainbuttoncontrol : MonoBehaviour
     public Slider player_fatigue;
     public Slider closed;
     public Text gold_text;
+    public Text cheapfood_text;
+    public Text nomalfood_text;
+    public Text expensivefood_text;
+    public Text chikenfood_text;
+    public Text tunafood_text;
     public Image[] image;
 
     public void menu_button()
@@ -240,6 +245,86 @@ public class mainbuttoncontrol : MonoBehaviour
         {
             parttime_not_Panel.SetActive(true);
             parttime_not_text.text = "더 이상 고된 알바를\n" + "하지 못합니다.";
+        }
+        status_update();
+    }
+
+    public void noamlfoodbutton()
+    {
+        if (DataManager.instance.nowPlayer.nomalfood > 0)
+        {
+            parttime_confirm_Panel.SetActive(true);
+            parttime_confirm_text.text = "배고픔이 20 감소하였습니다";
+            DataManager.instance.nowAnimal.hunger -= 20;
+        }
+        else
+        {
+            parttime_not_Panel.SetActive(true);
+            parttime_not_text.text = "음식이 부족합니다";
+        }
+        status_update();
+    }
+
+    public void cheapfoodbutton()
+    {
+        if (DataManager.instance.nowPlayer.cheapfood > 0)
+        {
+            parttime_confirm_Panel.SetActive(true);
+            parttime_confirm_text.text = "배고픔이 40 감소하였습니다";
+            DataManager.instance.nowAnimal.hunger -= 40;
+        }
+        else
+        {
+            parttime_not_Panel.SetActive(true);
+            parttime_not_text.text = "음식이 부족합니다";
+        }
+        status_update();
+    }
+
+    public void expansivefoodbutton()
+    {
+        if (DataManager.instance.nowPlayer.highfood > 0)
+        {
+            parttime_confirm_Panel.SetActive(true);
+            parttime_confirm_text.text = "배고픔이 60 감소하였습니다";
+            DataManager.instance.nowAnimal.hunger -= 60;
+        }
+        else
+        {
+            parttime_not_Panel.SetActive(true);
+            parttime_not_text.text = "음식이 부족합니다";
+        }
+        status_update();
+    }
+
+    public void chikenfoodbutton()
+    {
+        if (DataManager.instance.nowPlayer.chikenfood > 0)
+        {
+            parttime_confirm_Panel.SetActive(true);
+            parttime_confirm_text.text = "배고픔이 30 감소하였습니다";
+            DataManager.instance.nowAnimal.hunger -= 20;
+        }
+        else
+        {
+            parttime_not_Panel.SetActive(true);
+            parttime_not_text.text = "음식이 부족합니다";
+        }
+        status_update();
+    }
+
+    public void tunafoodbutton()
+    {
+        if (DataManager.instance.nowPlayer.tunafood > 0)
+        {
+            parttime_confirm_Panel.SetActive(true);
+            parttime_confirm_text.text = "배고픔이 30 감소하였습니다";
+            DataManager.instance.nowAnimal.hunger -= 20;
+        }
+        else
+        {
+            parttime_not_Panel.SetActive(true);
+            parttime_not_text.text = "음식이 부족합니다";
         }
         status_update();
     }

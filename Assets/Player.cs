@@ -14,4 +14,6 @@ public class Player
     public int cheapfood = 0;
     public int nomalfood = 0;
     public int highfood = 0;
+    public int chikenfood = 0;        
+    public int tunafood = 0;
 }
