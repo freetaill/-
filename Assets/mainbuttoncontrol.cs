@@ -216,6 +216,13 @@ public class mainbuttoncontrol : MonoBehaviour
         status_update();
     }
 
+    public void sleepbutton()
+    {
+        parttime_confirm_Panel.SetActive(true);
+        parttime_confirm_text.text = "체력을 회복합니다";
+        DataManager.instance.nowPlayer.fatigue += 100;
+    }
+
     public void parttime_exit()
     {
         parttime_Panel.SetActive(false);
