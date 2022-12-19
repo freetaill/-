@@ -78,6 +78,7 @@ public class mainbuttoncontrol : MonoBehaviour
             interaction_text.text = "산책을 하지 못합니다.";
         }
         status_update();
+
     }
 
     public void interaction_walk_correct_button()
