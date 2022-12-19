@@ -10,11 +10,13 @@ using UnityEngine.UI;
 public class competitionbuttoncontrol : MonoBehaviour
 {
     public GameObject competition_Panel;
+    public GameObject charm_Panel;
     public GameObject[] start_Button;
 
     public Image[] ranking;
     public Image[] racer;
     public Image[] endpoint;
+    public Image[] beauty;
 
     public Animal[] Rival = new Animal[6];
     public bool[] flag = new bool[3];
@@ -36,7 +38,7 @@ public class competitionbuttoncontrol : MonoBehaviour
     {
         competition_Panel.SetActive(true);
         reset_position();
-        move();
+        swimmove();
         swim_rank();
     }
 
@@ -53,7 +55,9 @@ public class competitionbuttoncontrol : MonoBehaviour
 
     public void start_charmming()
     {
-
+        charm_Panel.SetActive(true);
+        reset_position();
+        charmming_rank();
     }
 
     public void hurdle_button()
@@ -71,7 +75,7 @@ public class competitionbuttoncontrol : MonoBehaviour
     {
         competition_Panel.SetActive(true);
         reset_position();
-        move();
+        hurdlemove();
         hurdle_rank();
     }
 
@@ -101,7 +105,7 @@ public class competitionbuttoncontrol : MonoBehaviour
         }
         flag[0] = true;
         show_swimrank();
-        await Task.Delay(10000);
+        await Task.Delay(5000);
         competition_Panel.SetActive(false);
     }
 
@@ -139,8 +143,38 @@ public class competitionbuttoncontrol : MonoBehaviour
         }
         flag[1] = true;
         show_charmming();
-        await Task.Delay(10000);
-        competition_Panel.SetActive(false);
+        int[] rank = new int[3];
+        int k = 0;
+        float time = 0;
+        Vector2 originScale = beauty[0].transform.localScale;
+        for(int i = 5; i >= 3; i--)
+        {
+            for(int j = 0; j < 6; j++)
+            {
+                if (Rival[j].type == DataManager.instance.nowranking.charm_type[i])
+                {
+                    rank[k] = j;
+                    k++; break;
+                }
+            }
+        }
+        k = 0;
+        for(double size = 1.7; size > 1.2; size -= 0.2)
+        {
+            while (beauty[rank[k]].transform.localScale.x < size)
+            {
+                beauty[rank[k]].transform.localScale  = originScale * (1f + time * 3f);
+                time += Time.deltaTime;
+                if(beauty[rank[k]].transform.localScale.x >= size) 
+                { 
+                    time = 0;
+                    k++;
+                    break;
+                }
+            }
+        }
+        await Task.Delay(5000);
+        charm_Panel.SetActive(false);
     }
 
     public void show_charmming()
@@ -177,7 +211,7 @@ public class competitionbuttoncontrol : MonoBehaviour
         }
         flag[2] = true;
         show_hurdle();
-        await Task.Delay(10000);
+        await Task.Delay(5000);
         competition_Panel.SetActive(false);
     }
 
@@ -192,23 +226,55 @@ public class competitionbuttoncontrol : MonoBehaviour
         }
     }
 
-    public void move()
+    public void swimmove()
     {
-        if (racer[0].transform.position == endpoint[0].transform.position)
-        {
-            print("µµÂø");
-        }
-        else
-        {
-            racer[0].transform.position = Vector2.MoveTowards
-            (racer[0].transform.position, endpoint[0].transform.position, 10*Time.deltaTime);
-            Invoke("move", 0);
-        }
+        racer[0].transform.position = Vector2.MoveTowards
+            (racer[0].transform.position, endpoint[0].transform.position, 
+            (float)DataManager.instance.nowranking.swim_hp[0] * Time.deltaTime);
+        racer[1].transform.position = Vector2.MoveTowards
+            (racer[1].transform.position, endpoint[1].transform.position,
+            (float)DataManager.instance.nowranking.swim_hp[1] * Time.deltaTime);
+        racer[2].transform.position = Vector2.MoveTowards
+            (racer[2].transform.position, endpoint[2].transform.position,
+            (float)DataManager.instance.nowranking.swim_hp[2] * Time.deltaTime);
+        racer[3].transform.position = Vector2.MoveTowards
+            (racer[3].transform.position, endpoint[3].transform.position,
+            (float)DataManager.instance.nowranking.swim_hp[3] * Time.deltaTime);
+        racer[4].transform.position = Vector2.MoveTowards
+            (racer[4].transform.position, endpoint[4].transform.position,
+            (float)DataManager.instance.nowranking.swim_hp[4] * Time.deltaTime);
+        racer[5].transform.position = Vector2.MoveTowards
+            (racer[5].transform.position, endpoint[5].transform.position,
+            (float)DataManager.instance.nowranking.swim_hp[5] * Time.deltaTime);
+        Invoke("swimmove", 0);
+    }
+
+    public void hurdlemove()
+    {
+        racer[0].transform.position = Vector2.MoveTowards
+            (racer[0].transform.position, endpoint[0].transform.position,
+            (float)DataManager.instance.nowranking.hurdle_speedjump[0] * Time.deltaTime);
+        racer[1].transform.position = Vector2.MoveTowards
+            (racer[1].transform.position, endpoint[1].transform.position,
+            (float)DataManager.instance.nowranking.hurdle_speedjump[1] * Time.deltaTime);
+        racer[2].transform.position = Vector2.MoveTowards
+            (racer[2].transform.position, endpoint[2].transform.position,
+            (float)DataManager.instance.nowranking.hurdle_speedjump[2] * Time.deltaTime);
+        racer[3].transform.position = Vector2.MoveTowards
+            (racer[3].transform.position, endpoint[3].transform.position,
+            (float)DataManager.instance.nowranking.hurdle_speedjump[3] * Time.deltaTime);
+        racer[4].transform.position = Vector2.MoveTowards
+            (racer[4].transform.position, endpoint[4].transform.position,
+            (float)DataManager.instance.nowranking.hurdle_speedjump[4] * Time.deltaTime);
+        racer[5].transform.position = Vector2.MoveTowards
+            (racer[5].transform.position, endpoint[5].transform.position,
+            (float)DataManager.instance.nowranking.hurdle_speedjump[5] * Time.deltaTime);
+        Invoke("hurdlemove", 0);
     }
 
     public void make_Rival()
     {
-        int[] type = new int[5];
+        int[] type = {11, 11, 11, 11, 11, 11 };
         int hp = DataManager.instance.nowAnimal.hp;
         int speed = DataManager.instance.nowAnimal.speed;
         int jump = DataManager.instance.nowAnimal.jump;
@@ -219,7 +285,7 @@ public class competitionbuttoncontrol : MonoBehaviour
         Rival[0] = DataManager.instance.nowAnimal;
         for (int i = 1; i < 6; i++)
         {
-            int num = Random.Range(1, 11);
+            int num = Random.Range(0, 11);
             if(DataManager.instance.nowAnimal.type == num || type.Contains(num) == true)
             {
                 i--;
@@ -227,35 +293,36 @@ public class competitionbuttoncontrol : MonoBehaviour
             }
             else
             {
-                type[i-1] = num;
-                Rival[i] = new Animal(0, 0, 0, 0, 0, 0, 0, 0, 0);
+                type[i] = num;
+                Rival[i] = new Animal(12, 12, 12, 12, 12, 12, 12, 12, 12);
                 Rival[i].type = num;
-                Rival[i].hp = Random.Range(hp - 10, hp + 10);
-                Rival[i].speed = Random.Range(speed - 10, speed + 10);
-                Rival[i].jump = Random.Range(jump - 10, jump + 10);
-                Rival[i].closeness = Random.Range(closeness - 10, closeness + 10);
-                Rival[i].charming = Random.Range(charmming - 10, charmming + 10);
+                Rival[i].hp = Random.Range((hp - 10), (hp + 10));
+                Rival[i].speed = Random.Range((speed - 10), (speed + 10));
+                Rival[i].jump = Random.Range((jump - 10), (jump + 10));
+                Rival[i].closeness = Random.Range((closeness - 10), (closeness + 10));
+                Rival[i].charming = Random.Range(0, (charmming + 10));
             }
         }
         for (int i = 0; i < 6; i++)
         {
             if (i != 0)
             {
-                racer[i].sprite = DataManager.instance.stand[type[i-1]];
+                racer[i].sprite = DataManager.instance.stand[type[i]];
+                beauty[i].sprite = DataManager.instance.stand[type[i]];
             }
             else
             {
                 racer[0].sprite = DataManager.instance.stand[DataManager.instance.nowAnimal.type];
+                beauty[0].sprite = DataManager.instance.stand[DataManager.instance.nowAnimal.type];
             }
-            double swimhp = (double)Rival[i].hp * Rival[i].closeness / 100;
-            double hurdlespeedjump = (double)(Rival[i].speed + Rival[i].jump) / 2 * Rival[i].closeness / 100;
+            double swimhp = (double)Rival[i].hp /3;
+            double hurdlespeedjump = (double)(Rival[i].speed + Rival[i].jump) / 6;
             DataManager.instance.nowranking.swim_type[i] = Rival[i].type;
             DataManager.instance.nowranking.swim_hp[i] = swimhp; 
             DataManager.instance.nowranking.hurdle_type[i] = Rival[i].type;
             DataManager.instance.nowranking.hurdle_speedjump[i] = hurdlespeedjump;
             DataManager.instance.nowranking.charm_type[i] = Rival[i].type;
             DataManager.instance.nowranking.charm_charmming[i] = Rival[i].charming;
-            print(DataManager.instance.nowranking.hurdle_type[i]);
         }
     }
 
@@ -264,6 +331,7 @@ public class competitionbuttoncontrol : MonoBehaviour
         for(int i = 0; i < 6;i++)
         {
             racer[i].transform.position = new Vector3(track, racer[i].transform.position.y);
+            beauty[i].transform.localScale= Vector3.one;
         }
     }
 
@@ -271,6 +339,7 @@ public class competitionbuttoncontrol : MonoBehaviour
     void Start()
     {
         competition_Panel.SetActive(false);
+        charm_Panel.SetActive(false);
         track = racer[0].transform.position.x;
         make_Rival();
     }
