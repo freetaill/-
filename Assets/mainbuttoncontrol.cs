@@ -9,7 +9,6 @@ public class mainbuttoncontrol : MonoBehaviour
     public GameObject menuPanel;
     public GameObject interaction_Panel;
     public GameObject back_panel;
-    public GameObject feed_Panel;
 
     public GameObject train_Panel;
     public GameObject confirm_Panel;
@@ -21,11 +20,18 @@ public class mainbuttoncontrol : MonoBehaviour
 
     public GameObject Interaction_inner_Panel;
 
+    public GameObject feed_Panel;
+    public GameObject feed_confirm_Panel;
+    public GameObject feed_not_Panel;
+
+
     public Text confirm_text;
     public Text parttime_confirm_text;
     public Text train_not_text;
     public Text parttime_not_text;
     public Text interaction_text;
+    public Text feed_confirm_text;
+    public Text feed_not_text;
 
     public Slider animal_fatigue;
     public Slider player_fatigue;
@@ -98,6 +104,90 @@ public class mainbuttoncontrol : MonoBehaviour
         feed_Panel.SetActive(!feed_Panel.active);
     }
 
+    public void noamlfoodbutton()
+    {
+        if (DataManager.instance.nowPlayer.nomalfood > 0)
+        {
+            feed_confirm_Panel.SetActive(true);
+            feed_confirm_text.text = "배고픔이 40 감소하였습니다";
+            DataManager.instance.nowAnimal.hunger -= 20;
+            DataManager.instance.nowPlayer.nomalfood--;
+        }
+        else
+        {
+            feed_not_Panel.SetActive(true);
+            feed_not_text.text = "음식이 부족합니다";
+        }
+        status_update();
+    }
+
+    public void cheapfoodbutton()
+    {
+        if (DataManager.instance.nowPlayer.cheapfood > 0)
+        {
+            feed_confirm_Panel.SetActive(true);
+            feed_confirm_text.text = "배고픔이 20 감소하였습니다";
+            DataManager.instance.nowAnimal.hunger -= 40;
+            DataManager.instance.nowPlayer.cheapfood--;
+        }
+        else
+        {
+            feed_not_Panel.SetActive(true);
+            feed_not_text.text = "음식이 부족합니다";
+        }
+        status_update();
+    }
+
+    public void expansivefoodbutton()
+    {
+        if (DataManager.instance.nowPlayer.highfood > 0)
+        {
+            feed_confirm_Panel.SetActive(true);
+            feed_confirm_text.text = "배고픔이 60 감소하였습니다";
+            DataManager.instance.nowAnimal.hunger -= 60;
+            DataManager.instance.nowPlayer.highfood--;
+        }
+        else
+        {
+            feed_not_Panel.SetActive(true);
+            feed_not_text.text = "음식이 부족합니다";
+        }
+        status_update();
+    }
+
+    public void chikenfoodbutton()
+    {
+        if (DataManager.instance.nowPlayer.chikenfood > 0)
+        {
+            feed_confirm_Panel.SetActive(true);
+            feed_confirm_text.text = "배고픔이 30 감소하였습니다";
+            DataManager.instance.nowAnimal.hunger -= 30;
+            DataManager.instance.nowPlayer.chikenfood--;
+        }
+        else
+        {
+            feed_not_Panel.SetActive(true);
+            feed_not_text.text = "음식이 부족합니다";
+        }
+        status_update();
+    }
+
+    public void tunafoodbutton()
+    {
+        if (DataManager.instance.nowPlayer.tunafood > 0)
+        {
+            feed_confirm_Panel.SetActive(true);
+            feed_confirm_text.text = "배고픔이 30 감소하였습니다";
+            DataManager.instance.nowAnimal.hunger -= 30;
+            DataManager.instance.nowPlayer.tunafood--;
+        }
+        else
+        {
+            feed_not_Panel.SetActive(true);
+            feed_not_text.text = "음식이 부족합니다";
+        }
+        status_update();
+    }
     public void competition_button()
     {
         SceneManager.LoadScene("competition");
@@ -249,96 +339,14 @@ public class mainbuttoncontrol : MonoBehaviour
         status_update();
     }
 
-    public void noamlfoodbutton()
-    {
-        if (DataManager.instance.nowPlayer.nomalfood > 0)
-        {
-            parttime_confirm_Panel.SetActive(true);
-            parttime_confirm_text.text = "배고픔이 20 감소하였습니다";
-            DataManager.instance.nowAnimal.hunger -= 20;
-            DataManager.instance.nowPlayer.nomalfood--;
-        }
-        else
-        {
-            parttime_not_Panel.SetActive(true);
-            parttime_not_text.text = "음식이 부족합니다";
-        }
-        status_update();
-    }
-
-    public void cheapfoodbutton()
-    {
-        if (DataManager.instance.nowPlayer.cheapfood > 0)
-        {
-            parttime_confirm_Panel.SetActive(true);
-            parttime_confirm_text.text = "배고픔이 40 감소하였습니다";
-            DataManager.instance.nowAnimal.hunger -= 40;
-            DataManager.instance.nowPlayer.cheapfood--;
-        }
-        else
-        {
-            parttime_not_Panel.SetActive(true);
-            parttime_not_text.text = "음식이 부족합니다";
-        }
-        status_update();
-    }
-
-    public void expansivefoodbutton()
-    {
-        if (DataManager.instance.nowPlayer.highfood > 0)
-        {
-            parttime_confirm_Panel.SetActive(true);
-            parttime_confirm_text.text = "배고픔이 60 감소하였습니다";
-            DataManager.instance.nowAnimal.hunger -= 60;
-            DataManager.instance.nowPlayer.highfood--;
-        }
-        else
-        {
-            parttime_not_Panel.SetActive(true);
-            parttime_not_text.text = "음식이 부족합니다";
-        }
-        status_update();
-    }
-
-    public void chikenfoodbutton()
-    {
-        if (DataManager.instance.nowPlayer.chikenfood > 0)
-        {
-            parttime_confirm_Panel.SetActive(true);
-            parttime_confirm_text.text = "배고픔이 30 감소하였습니다";
-            DataManager.instance.nowAnimal.hunger -= 30;
-            DataManager.instance.nowPlayer.chikenfood--;
-        }
-        else
-        {
-            parttime_not_Panel.SetActive(true);
-            parttime_not_text.text = "음식이 부족합니다";
-        }
-        status_update();
-    }
-
-    public void tunafoodbutton()
-    {
-        if (DataManager.instance.nowPlayer.tunafood > 0)
-        {
-            parttime_confirm_Panel.SetActive(true);
-            parttime_confirm_text.text = "배고픔이 30 감소하였습니다";
-            DataManager.instance.nowAnimal.hunger -= 30;
-            DataManager.instance.nowPlayer.tunafood--;
-        }
-        else
-        {
-            parttime_not_Panel.SetActive(true);
-            parttime_not_text.text = "음식이 부족합니다";
-        }
-        status_update();
-    }
+    
 
     public void sleepbutton()
     {
         parttime_confirm_Panel.SetActive(true);
         parttime_confirm_text.text = "체력을 회복합니다";
         DataManager.instance.nowPlayer.fatigue += 100;
+        status_update();
     }
 
     public void parttime_exit()
@@ -359,12 +367,28 @@ public class mainbuttoncontrol : MonoBehaviour
         parttime_not_Panel.SetActive(false);
         parttime_Panel.SetActive(false);
     }
+    public void feed_confirm_button()
+    {
+        feed_confirm_Panel.SetActive(false);
+        feed_Panel.SetActive(false);
+    }
+
+    public void feed_not()
+    {
+        feed_not_Panel.SetActive(false);
+        feed_Panel.SetActive(false);
+    }
     public void status_update()
     {
         animal_fatigue.value = DataManager.instance.nowAnimal.fatigue;
         player_fatigue.value = DataManager.instance.nowPlayer.fatigue;
         closed.value = DataManager.instance.nowAnimal.closeness;
         gold_text.text = DataManager.instance.nowPlayer.Gold.ToString();
+        cheapfood_text.text = DataManager.instance.nowPlayer.cheapfood.ToString()+"개";
+        nomalfood_text.text = DataManager.instance.nowPlayer.nomalfood.ToString() + "개";
+        expensivefood_text.text = DataManager.instance.nowPlayer.highfood.ToString() + "개";
+        chikenfood_text.text = DataManager.instance.nowPlayer.chikenfood.ToString() + "개";
+        tunafood_text.text = DataManager.instance.nowPlayer.tunafood.ToString() + "개";
     }
 
     // Start is called before the first frame update
@@ -380,6 +404,9 @@ public class mainbuttoncontrol : MonoBehaviour
         parttime_confirm_Panel.SetActive(false);
         parttime_not_Panel.SetActive(false);
         Interaction_inner_Panel.SetActive(false);
+        feed_Panel.SetActive(false);
+        feed_confirm_Panel.SetActive(false);
+        feed_not_Panel.SetActive (false);
         status_update();
         image[0].sprite = DataManager.instance.stand[DataManager.instance.nowAnimal.type];
         image[1].sprite = DataManager.instance.face[DataManager.instance.nowAnimal.type];
