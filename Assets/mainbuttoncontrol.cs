@@ -52,7 +52,7 @@ public class mainbuttoncontrol : MonoBehaviour
     }
     public void menu_back_start_button()
     {
-        SceneManager.LoadScene("½ÃÀÛÈ­¸é");
+        SceneManager.LoadScene("ì‹œì‘í™”ë©´");
     }
     public void menu_save_lord_button()
     {
@@ -82,12 +82,12 @@ public class mainbuttoncontrol : MonoBehaviour
             DataManager.instance.nowAnimal.closeness += rb;
             DataManager.instance.nowPlayer.fatigue -= 20;
             DataManager.instance.nowAnimal.fatigue -= 20;
-            interaction_text.text = "»êÃ¥À» ¿Ï·á Çß½À´Ï´Ù.";
+            interaction_text.text = "ì‚°ì±…ì„ ì™„ë£Œ í–ˆìŠµë‹ˆë‹¤.";
         }
         else
         {
             Interaction_inner_Panel.SetActive(true);
-            interaction_text.text = "»êÃ¥À» ÇÏÁö ¸øÇÕ´Ï´Ù.";
+            interaction_text.text = "ì‚°ì±…ì„ í•˜ì§€ ëª»í•©ë‹ˆë‹¤.";
         }
         status_update();
 
@@ -109,14 +109,14 @@ public class mainbuttoncontrol : MonoBehaviour
         if (DataManager.instance.nowPlayer.nomalfood > 0)
         {
             feed_confirm_Panel.SetActive(true);
-            feed_confirm_text.text = "¹è°íÇÄÀÌ 40 °¨¼ÒÇÏ¿´½À´Ï´Ù";
+            feed_confirm_text.text = "ë°°ê³ í””ì´ 40 ê°ì†Œí•˜ì˜€ìŠµë‹ˆë‹¤";
             DataManager.instance.nowAnimal.hunger -= 20;
             DataManager.instance.nowPlayer.nomalfood--;
         }
         else
         {
             feed_not_Panel.SetActive(true);
-            feed_not_text.text = "À½½ÄÀÌ ºÎÁ·ÇÕ´Ï´Ù";
+            feed_not_text.text = "ìŒì‹ì´ ë¶€ì¡±í•©ë‹ˆë‹¤";
         }
         status_update();
     }
@@ -126,14 +126,14 @@ public class mainbuttoncontrol : MonoBehaviour
         if (DataManager.instance.nowPlayer.cheapfood > 0)
         {
             feed_confirm_Panel.SetActive(true);
-            feed_confirm_text.text = "¹è°íÇÄÀÌ 20 °¨¼ÒÇÏ¿´½À´Ï´Ù";
+            feed_confirm_text.text = "ë°°ê³ í””ì´ 20 ê°ì†Œí•˜ì˜€ìŠµë‹ˆë‹¤";
             DataManager.instance.nowAnimal.hunger -= 40;
             DataManager.instance.nowPlayer.cheapfood--;
         }
         else
         {
             feed_not_Panel.SetActive(true);
-            feed_not_text.text = "À½½ÄÀÌ ºÎÁ·ÇÕ´Ï´Ù";
+            feed_not_text.text = "ìŒì‹ì´ ë¶€ì¡±í•©ë‹ˆë‹¤";
         }
         status_update();
     }
@@ -143,14 +143,14 @@ public class mainbuttoncontrol : MonoBehaviour
         if (DataManager.instance.nowPlayer.highfood > 0)
         {
             feed_confirm_Panel.SetActive(true);
-            feed_confirm_text.text = "¹è°íÇÄÀÌ 60 °¨¼ÒÇÏ¿´½À´Ï´Ù";
+            feed_confirm_text.text = "ë°°ê³ í””ì´ 60 ê°ì†Œí•˜ì˜€ìŠµë‹ˆë‹¤";
             DataManager.instance.nowAnimal.hunger -= 60;
             DataManager.instance.nowPlayer.highfood--;
         }
         else
         {
             feed_not_Panel.SetActive(true);
-            feed_not_text.text = "À½½ÄÀÌ ºÎÁ·ÇÕ´Ï´Ù";
+            feed_not_text.text = "ìŒì‹ì´ ë¶€ì¡±í•©ë‹ˆë‹¤";
         }
         status_update();
     }
@@ -160,14 +160,14 @@ public class mainbuttoncontrol : MonoBehaviour
         if (DataManager.instance.nowPlayer.chikenfood > 0)
         {
             feed_confirm_Panel.SetActive(true);
-            feed_confirm_text.text = "¹è°íÇÄÀÌ 30 °¨¼ÒÇÏ¿´½À´Ï´Ù";
+            feed_confirm_text.text = "ë°°ê³ í””ì´ 30 ê°ì†Œí•˜ì˜€ìŠµë‹ˆë‹¤";
             DataManager.instance.nowAnimal.hunger -= 30;
             DataManager.instance.nowPlayer.chikenfood--;
         }
         else
         {
             feed_not_Panel.SetActive(true);
-            feed_not_text.text = "À½½ÄÀÌ ºÎÁ·ÇÕ´Ï´Ù";
+            feed_not_text.text = "ìŒì‹ì´ ë¶€ì¡±í•©ë‹ˆë‹¤";
         }
         status_update();
     }
@@ -177,14 +177,14 @@ public class mainbuttoncontrol : MonoBehaviour
         if (DataManager.instance.nowPlayer.tunafood > 0)
         {
             feed_confirm_Panel.SetActive(true);
-            feed_confirm_text.text = "¹è°íÇÄÀÌ 30 °¨¼ÒÇÏ¿´½À´Ï´Ù";
+            feed_confirm_text.text = "ë°°ê³ í””ì´ 30 ê°ì†Œí•˜ì˜€ìŠµë‹ˆë‹¤";
             DataManager.instance.nowAnimal.hunger -= 30;
             DataManager.instance.nowPlayer.tunafood--;
         }
         else
         {
             feed_not_Panel.SetActive(true);
-            feed_not_text.text = "À½½ÄÀÌ ºÎÁ·ÇÕ´Ï´Ù";
+            feed_not_text.text = "ìŒì‹ì´ ë¶€ì¡±í•©ë‹ˆë‹¤";
         }
         status_update();
     }
@@ -198,15 +198,15 @@ public class mainbuttoncontrol : MonoBehaviour
         SceneManager.LoadScene("Shop");
     }
 
-    
+
     //
-    // ÈÆ·Ã
+    // í›ˆë ¨
     //
     public void training_button()
     {
         train_Panel.SetActive(true);
     }
-    
+
     public void health_button()
     {
         if (DataManager.instance.nowAnimal.fatigue >= 20)
@@ -215,12 +215,12 @@ public class mainbuttoncontrol : MonoBehaviour
             int rb = Random.Range(1, 3);
             DataManager.instance.nowAnimal.hp += rb;
             DataManager.instance.nowAnimal.fatigue -= 20;
-            confirm_text.text = "Ã¼·ÂÀÌ " + rb.ToString() + " ¸¸Å­ ¿Ã¶ú½À´Ï´Ù.";
+            confirm_text.text = "ì²´ë ¥ì´ " + rb.ToString() + " ë§Œí¼ ì˜¬ëìŠµë‹ˆë‹¤.";
         }
         else
         {
             train_not_Panel.SetActive(true);
-            train_not_text.text = "´õ ÀÌ»ó\n" + "ÈÆ·ÃÀ» ÇÏÁö ¸øÇÕ´Ï´Ù.";
+            train_not_text.text = "ë” ì´ìƒ\n" + "í›ˆë ¨ì„ í•˜ì§€ ëª»í•©ë‹ˆë‹¤.";
         }
         status_update();
     }
@@ -233,12 +233,12 @@ public class mainbuttoncontrol : MonoBehaviour
             int rb = Random.Range(1, 3);
             DataManager.instance.nowAnimal.jump += rb;
             DataManager.instance.nowAnimal.fatigue -= 20;
-            confirm_text.text = "Á¡ÇÁ·ÂÀÌ " + rb.ToString() + " ¸¸Å­ ¿Ã¶ú½À´Ï´Ù.";
+            confirm_text.text = "ì í”„ë ¥ì´ " + rb.ToString() + " ë§Œí¼ ì˜¬ëìŠµë‹ˆë‹¤.";
         }
         else
         {
             train_not_Panel.SetActive(true);
-            train_not_text.text = "´õ ÀÌ»ó\n" + "ÈÆ·ÃÀ» ÇÏÁö ¸øÇÕ´Ï´Ù.";
+            train_not_text.text = "ë” ì´ìƒ\n" + "í›ˆë ¨ì„ í•˜ì§€ ëª»í•©ë‹ˆë‹¤.";
         }
         status_update();
     }
@@ -251,12 +251,12 @@ public class mainbuttoncontrol : MonoBehaviour
             int rb = Random.Range(1, 3);
             DataManager.instance.nowAnimal.speed += rb;
             DataManager.instance.nowAnimal.fatigue -= 20;
-            confirm_text.text = "¼Óµµ°¡ " + rb.ToString() + " ¸¸Å­ ¿Ã¶ú½À´Ï´Ù.";
+            confirm_text.text = "ì†ë„ê°€ " + rb.ToString() + " ë§Œí¼ ì˜¬ëìŠµë‹ˆë‹¤.";
         }
         else
         {
             train_not_Panel.SetActive(true);
-            train_not_text.text = "´õ ÀÌ»ó\n" + "ÈÆ·ÃÀ» ÇÏÁö ¸øÇÕ´Ï´Ù.";
+            train_not_text.text = "ë” ì´ìƒ\n" + "í›ˆë ¨ì„ í•˜ì§€ ëª»í•©ë‹ˆë‹¤.";
         }
         status_update();
     }
@@ -281,7 +281,7 @@ public class mainbuttoncontrol : MonoBehaviour
     }
 
     //
-    // ¾Ë¹Ù
+    // ì•Œë°”
     //
     public void parttime_button()
     {
@@ -293,14 +293,14 @@ public class mainbuttoncontrol : MonoBehaviour
         if (DataManager.instance.nowPlayer.fatigue >= 20)
         {
             parttime_confirm_Panel.SetActive(true);
-            parttime_confirm_text.text = "20¿øÀ» ¹ú¾ú½À´Ï´Ù.";
+            parttime_confirm_text.text = "20ì›ì„ ë²Œì—ˆìŠµë‹ˆë‹¤.";
             DataManager.instance.nowPlayer.Gold += 20;
             DataManager.instance.nowPlayer.fatigue -= 20;
         }
         else
         {
             parttime_not_Panel.SetActive(true);
-            parttime_not_text.text = "´õ ÀÌ»ó ½¬¿î ¾Ë¹Ù¸¦\n" + "ÇÏÁö ¸øÇÕ´Ï´Ù.";
+            parttime_not_text.text = "ë” ì´ìƒ ì‰¬ìš´ ì•Œë°”ë¥¼\n" + "í•˜ì§€ ëª»í•©ë‹ˆë‹¤.";
         }
         status_update();
     }
@@ -310,14 +310,14 @@ public class mainbuttoncontrol : MonoBehaviour
         if (DataManager.instance.nowPlayer.fatigue >= 50)
         {
             parttime_confirm_Panel.SetActive(true);
-            parttime_confirm_text.text = "50¿øÀ» ¹ú¾ú½À´Ï´Ù.";
+            parttime_confirm_text.text = "50ì›ì„ ë²Œì—ˆìŠµë‹ˆë‹¤.";
             DataManager.instance.nowPlayer.Gold += 50;
             DataManager.instance.nowPlayer.fatigue -= 50;
         }
         else
         {
             parttime_not_Panel.SetActive(true);
-            parttime_not_text.text = "´õ ÀÌ»ó º¸Åë ¾Ë¹Ù¸¦\n" + "ÇÏÁö ¸øÇÕ´Ï´Ù.";
+            parttime_not_text.text = "ë” ì´ìƒ ë³´í†µ ì•Œë°”ë¥¼\n" + "í•˜ì§€ ëª»í•©ë‹ˆë‹¤.";
         }
         status_update();
     }
@@ -327,24 +327,24 @@ public class mainbuttoncontrol : MonoBehaviour
         if (DataManager.instance.nowPlayer.fatigue >= 100)
         {
             parttime_confirm_Panel.SetActive(true);
-            parttime_confirm_text.text = "100¿øÀ» ¹ú¾ú½À´Ï´Ù.";
+            parttime_confirm_text.text = "100ì›ì„ ë²Œì—ˆìŠµë‹ˆë‹¤.";
             DataManager.instance.nowPlayer.Gold += 100;
             DataManager.instance.nowPlayer.fatigue -= 100;
         }
         else
         {
             parttime_not_Panel.SetActive(true);
-            parttime_not_text.text = "´õ ÀÌ»ó °íµÈ ¾Ë¹Ù¸¦\n" + "ÇÏÁö ¸øÇÕ´Ï´Ù.";
+            parttime_not_text.text = "ë” ì´ìƒ ê³ ëœ ì•Œë°”ë¥¼\n" + "í•˜ì§€ ëª»í•©ë‹ˆë‹¤.";
         }
         status_update();
     }
 
-    
+
 
     public void sleepbutton()
     {
         parttime_confirm_Panel.SetActive(true);
-        parttime_confirm_text.text = "Ã¼·ÂÀ» È¸º¹ÇÕ´Ï´Ù";
+        parttime_confirm_text.text = "ì²´ë ¥ì„ íšŒë³µí•©ë‹ˆë‹¤";
         DataManager.instance.nowPlayer.fatigue += 100;
         status_update();
     }
@@ -384,11 +384,11 @@ public class mainbuttoncontrol : MonoBehaviour
         player_fatigue.value = DataManager.instance.nowPlayer.fatigue;
         closed.value = DataManager.instance.nowAnimal.closeness;
         gold_text.text = DataManager.instance.nowPlayer.Gold.ToString();
-        cheapfood_text.text = DataManager.instance.nowPlayer.cheapfood.ToString()+"°³";
-        nomalfood_text.text = DataManager.instance.nowPlayer.nomalfood.ToString() + "°³";
-        expensivefood_text.text = DataManager.instance.nowPlayer.highfood.ToString() + "°³";
-        chikenfood_text.text = DataManager.instance.nowPlayer.chikenfood.ToString() + "°³";
-        tunafood_text.text = DataManager.instance.nowPlayer.tunafood.ToString() + "°³";
+        cheapfood_text.text = DataManager.instance.nowPlayer.cheapfood.ToString() + "ê°œ";
+        nomalfood_text.text = DataManager.instance.nowPlayer.nomalfood.ToString() + "ê°œ";
+        expensivefood_text.text = DataManager.instance.nowPlayer.highfood.ToString() + "ê°œ";
+        chikenfood_text.text = DataManager.instance.nowPlayer.chikenfood.ToString() + "ê°œ";
+        tunafood_text.text = DataManager.instance.nowPlayer.tunafood.ToString() + "ê°œ";
     }
 
     // Start is called before the first frame update
@@ -406,7 +406,7 @@ public class mainbuttoncontrol : MonoBehaviour
         Interaction_inner_Panel.SetActive(false);
         feed_Panel.SetActive(false);
         feed_confirm_Panel.SetActive(false);
-        feed_not_Panel.SetActive (false);
+        feed_not_Panel.SetActive(false);
         status_update();
         image[0].sprite = DataManager.instance.stand[DataManager.instance.nowAnimal.type];
         image[1].sprite = DataManager.instance.face[DataManager.instance.nowAnimal.type];
@@ -415,6 +415,6 @@ public class mainbuttoncontrol : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
