@@ -256,6 +256,7 @@ public class mainbuttoncontrol : MonoBehaviour
             parttime_confirm_Panel.SetActive(true);
             parttime_confirm_text.text = "배고픔이 20 감소하였습니다";
             DataManager.instance.nowAnimal.hunger -= 20;
+            DataManager.instance.nowPlayer.nomalfood--;
         }
         else
         {
@@ -272,6 +273,7 @@ public class mainbuttoncontrol : MonoBehaviour
             parttime_confirm_Panel.SetActive(true);
             parttime_confirm_text.text = "배고픔이 40 감소하였습니다";
             DataManager.instance.nowAnimal.hunger -= 40;
+            DataManager.instance.nowPlayer.cheapfood--;
         }
         else
         {
@@ -288,6 +290,7 @@ public class mainbuttoncontrol : MonoBehaviour
             parttime_confirm_Panel.SetActive(true);
             parttime_confirm_text.text = "배고픔이 60 감소하였습니다";
             DataManager.instance.nowAnimal.hunger -= 60;
+            DataManager.instance.nowPlayer.highfood--;
         }
         else
         {
@@ -303,7 +306,8 @@ public class mainbuttoncontrol : MonoBehaviour
         {
             parttime_confirm_Panel.SetActive(true);
             parttime_confirm_text.text = "배고픔이 30 감소하였습니다";
-            DataManager.instance.nowAnimal.hunger -= 20;
+            DataManager.instance.nowAnimal.hunger -= 30;
+            DataManager.instance.nowPlayer.chikenfood--;
         }
         else
         {
@@ -319,7 +323,8 @@ public class mainbuttoncontrol : MonoBehaviour
         {
             parttime_confirm_Panel.SetActive(true);
             parttime_confirm_text.text = "배고픔이 30 감소하였습니다";
-            DataManager.instance.nowAnimal.hunger -= 20;
+            DataManager.instance.nowAnimal.hunger -= 30;
+            DataManager.instance.nowPlayer.tunafood--;
         }
         else
         {
