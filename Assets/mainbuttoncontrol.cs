@@ -24,7 +24,9 @@ public class mainbuttoncontrol : MonoBehaviour
     public GameObject feed_confirm_Panel;
     public GameObject feed_not_Panel;
 
+    public GameObject sleep_confirm_Panel;
 
+    public Text sleep_confirm_text;
     public Text confirm_text;
     public Text parttime_confirm_text;
     public Text train_not_text;
@@ -414,9 +416,10 @@ public class mainbuttoncontrol : MonoBehaviour
 
     public void sleepbutton()
     {
-        parttime_confirm_Panel.SetActive(true);
-        parttime_confirm_text.text = "체력을 회복합니다";
-        DataManager.instance.nowPlayer.fatigue += 100;
+        sleep_confirm_Panel.SetActive(true);
+        sleep_confirm_text.text = "체력을 회복합니다";
+        DataManager.instance.nowPlayer.fatigue = 100;
+        DataManager.instance.nowAnimal.fatigue = 100;
         status_update();
     }
 
@@ -444,6 +447,10 @@ public class mainbuttoncontrol : MonoBehaviour
         feed_Panel.SetActive(false);
     }
 
+    public void sleep_confirm_button()
+    {
+        sleep_confirm_Panel.SetActive(false);
+    }
     public void feed_not()
     {
         feed_not_Panel.SetActive(false);
