@@ -21,6 +21,7 @@ public class DataManager : MonoBehaviour
 
     public Player nowPlayer = new Player();
     public Animal nowAnimal = new Animal(0, 10, 0, 10, 100, 0, 100, 0, 10);
+    public Ranking nowranking = new Ranking();
 
     public Sprite[] face;
     public Sprite[] sit;
@@ -53,7 +54,8 @@ public class DataManager : MonoBehaviour
 
     public void save()
     {
-        string data = JsonUtility.ToJson(nowPlayer) + "/" + JsonUtility.ToJson(nowAnimal);
+        string data = JsonUtility.ToJson(nowPlayer) + "/" + JsonUtility.ToJson(nowAnimal) + "/" 
+            + JsonUtility.ToJson(nowranking);
         File.WriteAllText(path + nowSlot.ToString(), data);
     }
 
@@ -63,6 +65,7 @@ public class DataManager : MonoBehaviour
         string[] datasplit = data.Split('/');
         nowPlayer = JsonUtility.FromJson<Player>(datasplit[0]);
         nowAnimal = JsonUtility.FromJson<Animal>(datasplit[1]);
+        nowranking = JsonUtility.FromJson<Ranking>(datasplit[2]);
     }
 
     public void DataClear()
