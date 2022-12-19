@@ -5383,6 +5383,9 @@ MonoBehaviour:
   player_fatigue: {fileID: 1813779488}
   closed: {fileID: 89895751}
   gold_text: {fileID: 879989676}
+  image:
+  - {fileID: 1720042941}
+  - {fileID: 1578319332}
 --- !u!1 &1161978426
 GameObject:
   m_ObjectHideFlags: 0
