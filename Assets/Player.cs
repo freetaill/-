@@ -11,4 +11,9 @@ public class Player
     public int fatigue = 100;
     public int Gold = 500;
     public int record = 0;
+    public int cheapfood = 0;
+    public int nomalfood = 0;
+    public int highfood = 0;
+    public int chikenfood = 0;        
+    public int tunafood = 0;
 }
