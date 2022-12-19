@@ -101,17 +101,31 @@ public class mainbuttoncontrol : MonoBehaviour
 
     public void interaction_feed_button()
     {
-        feed_Panel.SetActive(!feed_Panel.active);
+        feed_Panel.SetActive(true);
     }
 
     public void noamlfoodbutton()
     {
         if (DataManager.instance.nowPlayer.nomalfood > 0)
         {
-            feed_confirm_Panel.SetActive(true);
-            feed_confirm_text.text = "배고픔이 40 감소하였습니다";
-            DataManager.instance.nowAnimal.hunger -= 20;
-            DataManager.instance.nowPlayer.nomalfood--;
+            if (DataManager.instance.nowAnimal.hunger == 0)
+            {
+                feed_confirm_Panel.SetActive(true);
+                feed_confirm_text.text = "배가 고프지 않습니다";
+            }
+            if (DataManager.instance.nowAnimal.hunger < 40)
+            {
+                feed_confirm_Panel.SetActive(true);
+                feed_confirm_text.text = "더는 배가 고프지 않습니다";
+                DataManager.instance.nowAnimal.hunger = 0;
+            }
+            else
+            {
+                feed_confirm_Panel.SetActive(true);
+                feed_confirm_text.text = "배고픔이 40 감소하였습니다";
+                DataManager.instance.nowAnimal.hunger -= 20;
+                DataManager.instance.nowPlayer.nomalfood--;
+            }
         }
         else
         {
@@ -125,10 +139,24 @@ public class mainbuttoncontrol : MonoBehaviour
     {
         if (DataManager.instance.nowPlayer.cheapfood > 0)
         {
-            feed_confirm_Panel.SetActive(true);
-            feed_confirm_text.text = "배고픔이 20 감소하였습니다";
-            DataManager.instance.nowAnimal.hunger -= 40;
-            DataManager.instance.nowPlayer.cheapfood--;
+            if (DataManager.instance.nowAnimal.hunger == 0)
+            {
+                feed_confirm_Panel.SetActive(true);
+                feed_confirm_text.text = "배가 고프지 않습니다";
+            }
+            if (DataManager.instance.nowAnimal.hunger < 20)
+            {
+                feed_confirm_Panel.SetActive(true);
+                feed_confirm_text.text = "더는 배가 고프지 않습니다";
+                DataManager.instance.nowAnimal.hunger = 0;
+            }
+            else
+            {
+                feed_confirm_Panel.SetActive(true);
+                feed_confirm_text.text = "배고픔이 20 감소하였습니다";
+                DataManager.instance.nowAnimal.hunger -= 40;
+                DataManager.instance.nowPlayer.cheapfood--;
+            }
         }
         else
         {
@@ -142,10 +170,24 @@ public class mainbuttoncontrol : MonoBehaviour
     {
         if (DataManager.instance.nowPlayer.highfood > 0)
         {
-            feed_confirm_Panel.SetActive(true);
-            feed_confirm_text.text = "배고픔이 60 감소하였습니다";
-            DataManager.instance.nowAnimal.hunger -= 60;
-            DataManager.instance.nowPlayer.highfood--;
+            if (DataManager.instance.nowAnimal.hunger == 0)
+            {
+                feed_confirm_Panel.SetActive(true);
+                feed_confirm_text.text = "배가 고프지 않습니다";
+            }
+            if (DataManager.instance.nowAnimal.hunger < 60)
+            {
+                feed_confirm_Panel.SetActive(true);
+                feed_confirm_text.text = "더는 배가 고프지 않습니다";
+                DataManager.instance.nowAnimal.hunger = 0;
+            }
+            else
+            {
+                feed_confirm_Panel.SetActive(true);
+                feed_confirm_text.text = "배고픔이 60 감소하였습니다";
+                DataManager.instance.nowAnimal.hunger -= 60;
+                DataManager.instance.nowPlayer.highfood--;
+            }
         }
         else
         {
@@ -159,10 +201,24 @@ public class mainbuttoncontrol : MonoBehaviour
     {
         if (DataManager.instance.nowPlayer.chikenfood > 0)
         {
-            feed_confirm_Panel.SetActive(true);
-            feed_confirm_text.text = "배고픔이 30 감소하였습니다";
-            DataManager.instance.nowAnimal.hunger -= 30;
-            DataManager.instance.nowPlayer.chikenfood--;
+            if (DataManager.instance.nowAnimal.hunger == 0)
+            {
+                feed_confirm_Panel.SetActive(true);
+                feed_confirm_text.text = "배가 고프지 않습니다";
+            }
+            if (DataManager.instance.nowAnimal.hunger < 30)
+            {
+                feed_confirm_Panel.SetActive(true);
+                feed_confirm_text.text = "더는 배가 고프지 않습니다";
+                DataManager.instance.nowAnimal.hunger = 0;
+            }
+            else
+            {
+                feed_confirm_Panel.SetActive(true);
+                feed_confirm_text.text = "배고픔이 30 감소하였습니다";
+                DataManager.instance.nowAnimal.hunger -= 30;
+                DataManager.instance.nowPlayer.chikenfood--;
+            }
         }
         else
         {
@@ -176,10 +232,24 @@ public class mainbuttoncontrol : MonoBehaviour
     {
         if (DataManager.instance.nowPlayer.tunafood > 0)
         {
-            feed_confirm_Panel.SetActive(true);
-            feed_confirm_text.text = "배고픔이 30 감소하였습니다";
-            DataManager.instance.nowAnimal.hunger -= 30;
-            DataManager.instance.nowPlayer.tunafood--;
+            if (DataManager.instance.nowAnimal.hunger == 0)
+            {
+                feed_confirm_Panel.SetActive(true);
+                feed_confirm_text.text = "배가 고프지 않습니다";
+            }
+            else if (DataManager.instance.nowAnimal.hunger < 30)
+            {
+                feed_confirm_Panel.SetActive(true);
+                feed_confirm_text.text = "더는 배가 고프지 않습니다";
+                DataManager.instance.nowAnimal.hunger = 0;
+            }
+            else
+            {
+                feed_confirm_Panel.SetActive(true);
+                feed_confirm_text.text = "배고픔이 30 감소하였습니다";
+                DataManager.instance.nowAnimal.hunger -= 30;
+                DataManager.instance.nowPlayer.tunafood--;
+            }
         }
         else
         {
@@ -188,6 +258,7 @@ public class mainbuttoncontrol : MonoBehaviour
         }
         status_update();
     }
+
     public void competition_button()
     {
         SceneManager.LoadScene("competition");
