@@ -18,10 +18,13 @@ public class mainbuttoncontrol : MonoBehaviour
     public GameObject parttime_confirm_Panel;
     public GameObject parttime_not_Panel;
 
+    public GameObject Interaction_inner_Panel;
+
     public Text confirm_text;
     public Text parttime_confirm_text;
     public Text train_not_text;
     public Text parttime_not_text;
+    public Text interaction_text;
 
     public Slider animal_fatigue;
     public Slider player_fatigue;
@@ -60,8 +63,29 @@ public class mainbuttoncontrol : MonoBehaviour
     }
     public void interaction_walk_button()
     {
+        if (DataManager.instance.nowAnimal.fatigue >= 20 && DataManager.instance.nowPlayer.fatigue >= 20)
+        {
+            Interaction_inner_Panel.SetActive(true);
+            int rb = Random.Range(1, 3);
+            DataManager.instance.nowAnimal.closeness += rb;
+            DataManager.instance.nowPlayer.fatigue -= 20;
+            DataManager.instance.nowAnimal.fatigue -= 20;
+            interaction_text.text = "산책을 완료 했습니다.";
+        }
+        else
+        {
+            Interaction_inner_Panel.SetActive(true);
+            interaction_text.text = "산책을 하지 못합니다.";
+        }
         status_update();
     }
+
+    public void interaction_walk_correct_button()
+    {
+        Interaction_inner_Panel.SetActive(false);
+        interaction_Panel.SetActive(false);
+    }
+
     public void interaction_feed_button()
     {
         status_update();
@@ -262,6 +286,7 @@ public class mainbuttoncontrol : MonoBehaviour
         parttime_Panel.SetActive(false);
         parttime_confirm_Panel.SetActive(false);
         parttime_not_Panel.SetActive(false);
+        Interaction_inner_Panel.SetActive(false);
         status_update();
         image[0].sprite = DataManager.instance.stand[DataManager.instance.nowAnimal.type];
         image[1].sprite = DataManager.instance.face[DataManager.instance.nowAnimal.type];
